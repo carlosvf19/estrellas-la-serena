@@ -143,7 +143,7 @@
     var r = 8, k = 1 - 2 * f, rx = Math.abs(k) * r;
     var lado = creciente ? 1 : 0;
     var p = "M9 1 A8 8 0 0 " + lado + " 9 17 A" + rx.toFixed(2) + " 8 0 0 " + (k > 0 ? 1 - lado : lado) + " 9 1Z";
-    return '<svg class="luna" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#232C47"/><path d="' + p + '" fill="#F5F5F4"/></svg>';
+    return '<svg class="luna" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#262626"/><path d="' + p + '" fill="#E5E5E5"/></svg>';
   }
   function clave(fecha) { return fecha.getFullYear() + "-" + String(fecha.getMonth() + 1).padStart(2, "0") + "-" + String(fecha.getDate()).padStart(2, "0"); }
   function hoy0() { var h = new Date(); return new Date(h.getFullYear(), h.getMonth(), h.getDate()); }
