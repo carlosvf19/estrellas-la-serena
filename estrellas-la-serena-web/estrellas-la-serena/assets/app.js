@@ -23,6 +23,11 @@
     es: {
       meses: ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],
       dows: ["L","M","X","J","V","S","D"],
+      dowsC: ["lun","mar","mié","jue","vie","sáb","dom"],
+      hoy: "Esta noche", hoyC: "Hoy", manana: "Mañana",
+      cal: { oscura: "Cielo oscuro", media: "Luna en cuarto", brillante: "Luna brillante", bloq: "Luna llena", cancelada: "Cancelada por nubes" },
+      tags: { rec: "Recomendada", libre: "Libre", no: "No salimos" },
+      lunaAl: "Luna al",
       prod: { obs: "Observación de estrellas", cena: "Observación con cena en el campo", ruta: "Ruta guiada al atardecer" },
       bloq: "Noche de luna llena: no salimos. La luz de la Luna tapa casi todo el cielo profundo.",
       pasado: "Esta fecha ya ha pasado.",
@@ -66,6 +71,11 @@
     en: {
       meses: ["January","February","March","April","May","June","July","August","September","October","November","December"],
       dows: ["M","T","W","T","F","S","S"],
+      dowsC: ["mon","tue","wed","thu","fri","sat","sun"],
+      hoy: "Tonight", hoyC: "Today", manana: "Tmrw",
+      cal: { oscura: "Dark sky", media: "Quarter moon", brillante: "Bright moon", bloq: "Full moon", cancelada: "Cancelled (clouds)" },
+      tags: { rec: "Best pick", libre: "Available", no: "No session" },
+      lunaAl: "Moon at",
       prod: { obs: "Stargazing", cena: "Stargazing with dinner in the countryside", ruta: "Guided sunset walk" },
       bloq: "Full moon night: we don't go out. Moonlight hides most of the deep sky.",
       pasado: "This date has already passed.",
@@ -133,7 +143,7 @@
     var r = 8, k = 1 - 2 * f, rx = Math.abs(k) * r;
     var lado = creciente ? 1 : 0;
     var p = "M9 1 A8 8 0 0 " + lado + " 9 17 A" + rx.toFixed(2) + " 8 0 0 " + (k > 0 ? 1 - lado : lado) + " 9 1Z";
-    return '<svg class="luna" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#2a375f"/><path d="' + p + '" fill="#f3f1ea"/></svg>';
+    return '<svg class="luna" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#232C47"/><path d="' + p + '" fill="#F5F5F4"/></svg>';
   }
   function clave(fecha) { return fecha.getFullYear() + "-" + String(fecha.getMonth() + 1).padStart(2, "0") + "-" + String(fecha.getDate()).padStart(2, "0"); }
   function hoy0() { var h = new Date(); return new Date(h.getFullYear(), h.getMonth(), h.getDate()); }
@@ -211,6 +221,35 @@
     document.getElementById("cal-next").addEventListener("click", function () { mesVista.setMonth(mesVista.getMonth() + 1); pintarCal(); });
     pintarCal(); infoDia();
   }
+
+  /* ---------- Portada: próximas 7 noches ---------- */
+  function seleccionar(k) {
+    var p = k.split("-");
+    selFecha = k; mesVista = new Date(+p[0], +p[1] - 1, 1);
+    pintarCal(); infoDia(); resumen();
+    cal.closest("section").scrollIntoView({ behavior: "smooth" });
+  }
+  var lista = document.getElementById("noches-lista"), hoyBox = document.getElementById("noches-hoy");
+  if (lista && cal) {
+    var h0 = hoy0(), html = "";
+    for (var i = 0; i < 7; i++) {
+      var f = new Date(h0.getFullYear(), h0.getMonth(), h0.getDate() + i), e = estadoNoche(f);
+      var no = e.estado === "bloq" || e.estado === "cancelada";
+      var calidad = no ? T.cal[e.estado] : T.cal[e.cielo];
+      if (i === 0) {
+        hoyBox.innerHTML = iconoLuna(e.f, e.creciente) + "<div><small>" + T.hoy + "</small><b>" + calidad + "</b><small>" + T.lunaAl + " " + Math.round(e.f * 100) + " %</small></div>";
+      }
+      var tag = no ? '<span class="tag">' + T.tags.no + "</span>" : (e.cielo === "oscura" && e.entresemana ? '<span class="tag si">' + T.tags.rec + "</span>" : '<span class="tag">' + T.tags.libre + "</span>");
+      var dl = i === 0 ? T.hoyC : i === 1 ? T.manana : T.dowsC[e.dow] + " " + f.getDate();
+      html += '<li><button type="button" class="noche" data-k="' + e.clave + '"' + (no ? ' aria-disabled="true"' : "") + '><span class="d">' + dl + "</span>" + iconoLuna(e.f, e.creciente) + '<span class="q">' + calidad + "</span>" + tag + "</button></li>";
+    }
+    lista.innerHTML = html;
+    lista.addEventListener("click", function (ev) {
+      var b = ev.target.closest(".noche");
+      if (b && !b.getAttribute("aria-disabled")) seleccionar(b.dataset.k);
+    });
+  }
+
   function mostrarBloq(k) {
     var p = k.split("-"), e = estadoNoche(new Date(+p[0], +p[1] - 1, +p[2]));
     var box = document.getElementById("info-dia");
