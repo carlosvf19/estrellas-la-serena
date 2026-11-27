@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Observación de estrellas en La Serena, Extremadura · Estrellas de La Serena</title>
 <meta name="description" content="Salidas de observación de estrellas en La Serena (Badajoz) en grupos de 15 como máximo, con cena en el campo opcional. Solo noches sin luna llena. Si hay nubes, no pagas.">
-<meta name="theme-color" content="#0b1630">
+<meta name="theme-color" content="#0A0E1A">
 <link rel="canonical" href="https://carlosvf19.github.io/estrellas-la-serena/">
 <link rel="alternate" hreflang="es" href="https://carlosvf19.github.io/estrellas-la-serena/">
 <link rel="alternate" hreflang="en" href="https://carlosvf19.github.io/estrellas-la-serena/en/">
@@ -13,6 +13,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1630'/%3E%3Cpath d='M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z' fill='%23f5c46b'/%3E%3C/svg%3E">
 <meta property="og:title" content="Estrellas de La Serena · Observación de estrellas en Extremadura">
 <meta property="og:description" content="Grupos pequeños, noches sin luna llena y cena con productores de la zona. Si hay nubes, no salimos y no pagas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
 <link rel="stylesheet" href="assets/styles.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TouristTrip","name":"Observación de estrellas en La Serena","provider":{"@type":"LocalBusiness","name":"Estrellas de La Serena","address":{"@type":"PostalAddress","addressLocality":"Castuera","addressRegion":"Badajoz","addressCountry":"ES"}},"offers":[{"@type":"Offer","name":"Observación de estrellas","price":"35","priceCurrency":"EUR"},{"@type":"Offer","name":"Observación con cena en el campo","price":"60","priceCurrency":"EUR"},{"@type":"Offer","name":"Ruta guiada","price":"25","priceCurrency":"EUR"}],"availableLanguage":["es","en"]}
@@ -22,7 +25,7 @@
 <a class="skip" href="#reservar">Saltar a la reserva</a>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l3 8.6L28 15l-9 3.4L16 27l-3-8.6L4 15l9-3.4z" fill="#f5c46b"/></svg>Estrellas de La Serena</a>
+    <a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l3 8.6L28 15l-9 3.4L16 27l-3-8.6L4 15l9-3.4z" fill="#F5C46B"/></svg>Estrellas de La Serena</a>
     <nav class="menu" aria-label="Principal">
       <a href="#experiencias">Experiencias</a><a href="#reservar">Calendario</a><a href="#nubes">Si hay nubes</a>
       <a href="#grupos">Grupos</a><a href="#llegar">Cómo llegar</a><a href="#dudas">Dudas</a>
@@ -38,52 +41,61 @@
 <section class="hero" aria-labelledby="h1">
   <svg class="stars" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
   <div class="wrap">
-    <h1 id="h1">Observación de estrellas en La Serena, Extremadura</h1>
-    <p class="lema">Si hay nubes, no salimos. Y no pagas.</p>
-    <p class="sub">Salidas con guía de astronomía en grupos de 15 personas como máximo, solo en noches sin luna llena. Si quieres, con cena en el campo con productos de la zona. En español e inglés.</p>
-    <div class="ctas">
-      <a class="btn" href="#reservar">Ver noches disponibles</a>
-      <a class="btn sec" href="#grupos">Grupos y empresas</a>
+    <div>
+      <p class="eyebrow">Castuera · Badajoz · Extremadura</p>
+      <h1 id="h1">Observación de estrellas en <em>La Serena</em></h1>
+      <p class="lema">Si hay nubes, no salimos. Y no pagas.</p>
+      <p class="sub">Grupos de 15 personas como máximo, solo en noches sin luna llena y, si quieres, con cena en el campo con productos de la zona. En español e inglés.</p>
+      <div class="ctas">
+        <a class="btn" href="#reservar">Ver noches disponibles <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <a class="btn sec" href="#grupos">Grupos y empresas</a>
+      </div>
     </div>
-    <div class="datos">
-      <div class="dato"><b>15 personas</b><span>como máximo por salida</span></div>
-      <div class="dato"><b>Desde 35 €</b><span>pagas el día de la salida</span></div>
-      <div class="dato"><b>Español · English</b><span>elige al reservar</span></div>
-      <div class="dato"><b>4,9 de 5</b><span>valoración media de las salidas con cena</span></div>
-    </div>
+    <aside class="noches" aria-labelledby="noches-tit">
+      <div class="noches-cab"><h2 id="noches-tit" class="eyebrow" style="margin:0">Próximas noches</h2><span>Toca una para reservar</span></div>
+      <div class="noches-hoy" id="noches-hoy"></div>
+      <ul class="noches-lista" id="noches-lista"></ul>
+    </aside>
   </div>
 </section>
 
 <section id="experiencias" aria-labelledby="h-exp">
   <div class="wrap">
-    <h2 id="h-exp">Tres formas de conocer el cielo de La Serena</h2>
-    <p class="intro">Todas con Elena, guía de astronomía, y con grupos pequeños para que todo el mundo mire por el telescopio sin prisas.</p>
-    <div class="cards">
-      <article class="card">
+    <p class="eyebrow">Experiencias</p>
+    <h2 id="h-exp">Tres formas de mirar el mismo cielo</h2>
+    <p class="intro">Todas con Elena, guía de astronomía, y en grupos pequeños para que todo el mundo mire por el telescopio sin prisas.</p>
+    <div class="bento">
+      <article class="cel grande">
         <span class="etq">La más valorada</span>
         <h3>Observación con cena en el campo</h3>
-        <div class="precio">60 € <small>por persona</small></div>
-        <ul><li>Cena de Miguel con productores de la zona</li><li>Observación a simple vista y con telescopio</li><li>Unas 3 horas</li></ul>
-        <a class="btn" href="#reservar" data-prod="cena">Reservar con cena</a>
+        <p>Miguel prepara la cena con productores de la zona y, al caer la noche, Elena apaga las luces y empieza la observación. Unas 3 horas.</p>
+        <ul><li>Cena con productos de la zona</li><li>Observación a simple vista y con telescopio</li><li>Nunca más de 15 personas</li></ul>
+        <div class="precio">60 €<small>por persona</small></div>
+        <a class="btn" href="#reservar" data-prod="cena">Reservar con cena <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </article>
-      <article class="card">
+      <article class="cel ancha">
         <h3>Observación de estrellas</h3>
-        <div class="precio">35 € <small>por persona</small></div>
-        <ul><li>Constelaciones, planetas y Vía Láctea</li><li>Telescopio y puntero láser</li><li>Unas 2 horas</li></ul>
-        <a class="btn" href="#reservar" data-prod="obs">Reservar observación</a>
+        <p>Constelaciones, planetas y Vía Láctea a simple vista y con telescopio. Unas 2 horas.</p>
+        <div class="precio">35 €<small>por persona</small></div>
+        <a class="btn sec peq" href="#reservar" data-prod="obs">Reservar <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </article>
-      <article class="card">
-        <h3>Ruta guiada al atardecer</h3>
-        <div class="precio">25 € <small>por persona</small></div>
-        <ul><li>Paseo por la dehesa y la sierra</li><li>Acaba con las primeras estrellas</li><li>Apta para familias</li></ul>
-        <a class="btn" href="#reservar" data-prod="ruta">Reservar ruta</a>
+      <article class="cel">
+        <h3>Ruta al atardecer</h3>
+        <p>Paseo por la dehesa que acaba con las primeras estrellas. Apta para familias.</p>
+        <div class="precio">25 €<small>por persona</small></div>
+        <a class="btn sec peq" href="#reservar" data-prod="ruta">Reservar <svg class="flecha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </article>
+      <div class="cel dato"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><b>15</b><span>personas como máximo por salida</span></div>
+      <div class="cel dato"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><b>4,9 / 5</b><span>valoración media de las salidas con cena</span></div>
+      <div class="cel dato"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg><b>ES · EN</b><span>elige el idioma al reservar</span></div>
+      <div class="cel ancha"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 2 20 20"/><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"/><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"/></svg><h3>Si hay nubes, no pagas</h3><p>Elena decide antes de las 17:00 y te avisa. Cambias de noche o cancelas sin coste.</p><a href="#nubes">Cómo funciona →</a></div>
     </div>
   </div>
 </section>
 
 <section id="reservar" aria-labelledby="h-res">
   <div class="wrap">
+    <p class="eyebrow">Reserva</p>
     <h2 id="h-res">Elige tu noche</h2>
     <p class="intro">El calendario muestra la Luna de cada noche. Las de luna llena no se venden porque su luz tapa el cielo profundo. El punto verde marca noches oscuras entre semana: más tranquilas y con mejor cielo.</p>
     <div id="paso-reserva" class="reserva">
@@ -96,9 +108,9 @@
         </div>
         <div class="cal" id="cal"></div>
         <ul class="leyenda">
-          <li><span class="pt" style="border:2px solid #4c7ad6"></span>Cielo oscuro</li>
-          <li><span class="pt" style="background:#7fd6a4;border-radius:50%"></span>Oscura entre semana</li>
-          <li><span class="pt" style="background:#2a2433;border:1px solid #4a3550"></span>Luna llena: no salimos</li>
+          <li><span class="pt" style="border:1px solid rgba(91,134,229,.8)"></span>Cielo oscuro</li>
+          <li><span class="pt" style="background:#7FD6A4;border-radius:50%;width:7px;height:7px"></span>Oscura entre semana</li>
+          <li><span class="pt" style="border:1px dashed rgba(255,255,255,.35)"></span>Luna llena: no salimos</li>
         </ul>
         <div class="info-dia" id="info-dia" aria-live="polite"></div>
         <p class="error" id="err-fecha" aria-live="polite"></p>
@@ -157,6 +169,7 @@
 
 <section id="nubes" aria-labelledby="h-nubes">
   <div class="wrap">
+    <p class="eyebrow">Política de nubes</p>
     <h2 id="h-nubes">¿Y si está nublado?</h2>
     <p class="intro">Es lo que más nos preguntáis, así que va claro: una noche nublada no se vende como si fuera buena. Más o menos una de cada seis noches se cancela por nubes.</p>
     <div class="nubes">
@@ -169,6 +182,7 @@
 
 <section id="grupos" aria-labelledby="h-grupos">
   <div class="wrap">
+    <p class="eyebrow">Grupos</p>
     <h2 id="h-grupos">Grupos y empresas: noches de diario, cielo para todos</h2>
     <p class="intro">Cenas de equipo, asociaciones o grupos de amigos, sobre todo de lunes a jueves, cuando el cielo está más tranquilo. Para que todo el mundo mire bien por el telescopio, nunca hay más de 15 personas observando a la vez: los grupos grandes cenan juntos y observan por turnos.</p>
     <div class="turnos">
@@ -196,6 +210,7 @@
 
 <section id="llegar" aria-labelledby="h-llegar">
   <div class="wrap">
+    <p class="eyebrow">Cómo llegar</p>
     <h2 id="h-llegar">Cómo llegar</h2>
     <p class="intro">Salimos desde un punto de encuentro en la zona de Castuera (Badajoz), lejos de la luz de los pueblos. La ubicación exacta te llega en el correo de confirmación con un enlace al mapa.</p>
     <div class="llegar">
@@ -215,6 +230,7 @@
 
 <section id="dudas" aria-labelledby="h-dudas">
   <div class="wrap">
+    <p class="eyebrow">Dudas</p>
     <h2 id="h-dudas">Dudas frecuentes</h2>
     <details><summary>¿Qué pasa si está nublado?</summary><p>No salimos. Te avisamos antes de las 17:00 del mismo día y eliges otra noche o cancelas sin pagar nada.</p></details>
     <details><summary>¿Hacéis salidas para grupos y empresas?</summary><p>Sí. Hasta 15 personas observan a la vez; los grupos grandes cenan juntos y observan por turnos. <a href="#grupos">Pide propuesta</a>.</p></details>
