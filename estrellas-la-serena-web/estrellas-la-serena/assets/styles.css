@@ -1,0 +1,158 @@
+/* Estrellas de La Serena · hoja de estilos
+   Colores: noche (#0b1630) para el fondo, ámbar (#f5c46b) para acciones,
+   blanco roto (#f3f1ea) para el texto. Contraste ámbar/noche > 9:1. */
+:root{
+  --noche:#0b1630; --noche-2:#13224a; --noche-3:#1c2f5f;
+  --ambar:#f5c46b; --ambar-osc:#d9a441; --texto:#f3f1ea; --suave:#c3c9db;
+  --ok:#7fd6a4; --aviso:#ffb4a2; --radio:14px;
+  --sombra:0 6px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;
+  font-size:17px;line-height:1.55;color:var(--texto);background:var(--noche)}
+a{color:var(--ambar)}
+img,svg{max-width:100%}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;color:#000;padding:8px;z-index:99}
+
+/* Cabecera */
+header.top{position:sticky;top:0;z-index:20;background:rgba(11,22,48,.94);backdrop-filter:blur(6px);border-bottom:1px solid #22325e}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:58px}
+.logo{white-space:nowrap;font-size:15px;display:flex;align-items:center;gap:8px;color:var(--texto);text-decoration:none;font-weight:700;letter-spacing:.2px}
+.logo svg{width:26px;height:26px}
+nav.menu{display:none;gap:18px}
+nav.menu a{color:var(--suave);text-decoration:none;font-size:15px}
+nav.menu a:hover{color:var(--texto)}
+.top-acc{display:flex;gap:8px;align-items:center}
+.lang{color:var(--suave);font-size:14px;text-decoration:none;border:1px solid #33467a;border-radius:8px;padding:6px 9px}
+@media (min-width:860px){nav.menu{display:flex}}
+
+/* Botones */
+.btn{display:inline-block;background:var(--ambar);color:#1a1300;font-weight:700;border:0;border-radius:12px;
+  padding:14px 20px;font-size:17px;text-decoration:none;cursor:pointer;min-height:48px}
+.btn:hover{background:var(--ambar-osc)}
+.btn.sec{background:transparent;color:var(--texto);border:1px solid #42568e}
+.btn.peq{padding:9px 14px;min-height:40px;font-size:15px}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #fff;outline-offset:2px}
+
+/* Portada */
+.hero{position:relative;overflow:hidden;padding:56px 0 48px;
+  background:radial-gradient(1200px 500px at 70% -10%,#22397a 0%,transparent 60%),var(--noche)}
+.hero .stars{position:absolute;inset:0;pointer-events:none;opacity:.8}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.1;margin:0 0 14px;max-width:780px}
+.hero .lema{font-size:clamp(18px,2.6vw,22px);color:var(--ambar);margin:0 0 12px;font-weight:600}
+.hero p.sub{color:var(--suave);max-width:640px;margin:0 0 24px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:30px;max-width:760px}
+.dato{background:rgba(19,34,74,.75);border:1px solid #2a3c70;border-radius:var(--radio);padding:12px 14px}
+.dato b{display:block;font-size:20px;color:var(--texto)}
+.dato span{font-size:14px;color:var(--suave)}
+
+section{scroll-margin-top:60px;padding:52px 0;border-top:1px solid #1b2a55}
+section h2{font-size:clamp(24px,4vw,34px);margin:0 0 8px}
+section .intro{color:var(--suave);margin:0 0 24px;max-width:680px}
+
+/* Experiencias */
+.cards{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--noche-2);border:1px solid #2a3c70;border-radius:var(--radio);padding:20px;display:flex;flex-direction:column;gap:10px}
+.card h3{margin:0;font-size:20px}
+.card .precio{font-size:28px;font-weight:800;color:var(--ambar)}
+.card .precio small{font-size:14px;color:var(--suave);font-weight:400}
+.card ul{margin:0;padding-left:18px;color:var(--suave);font-size:15px}
+.card .btn{margin-top:auto;text-align:center}
+.etq{display:inline-block;font-size:12px;font-weight:700;background:#2b4a2f;color:#c8f0cf;border-radius:999px;padding:3px 10px;width:max-content}
+
+/* Calendario */
+.cal-cab{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.cal-cab h3{margin:0;font-size:19px;text-transform:capitalize}
+.cal-nav{background:var(--noche-3);color:var(--texto);border:1px solid #3a4f88;border-radius:10px;width:44px;height:44px;font-size:20px;cursor:pointer}
+.cal-nav:disabled{opacity:.35;cursor:default}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal .dow{font-size:12px;text-align:center;color:var(--suave);padding:4px 0}
+.dia{position:relative;background:var(--noche-2);border:1px solid #26386a;border-radius:10px;min-height:58px;padding:5px 3px;
+  color:var(--texto);font:inherit;font-size:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer}
+.dia .luna{width:18px;height:18px}
+.dia.vacio{background:transparent;border:0;cursor:default}
+.dia.pasado,.dia.bloq{opacity:.42;cursor:not-allowed;text-decoration:line-through}
+.dia.bloq{background:#2a2433;border-color:#4a3550}
+.dia.oscura{border-color:#4c7ad6}
+.dia.entresemana.oscura::after{content:"";position:absolute;top:4px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.dia.sel{outline:3px solid var(--ambar);outline-offset:-1px;background:#26365f}
+.leyenda{display:flex;flex-wrap:wrap;gap:12px 18px;font-size:14px;color:var(--suave);margin:12px 0 0;padding:0;list-style:none}
+.leyenda li{display:flex;align-items:center;gap:6px}
+.pt{width:12px;height:12px;border-radius:3px;display:inline-block}
+.info-dia{margin-top:14px;background:var(--noche-2);border:1px solid #2a3c70;border-radius:var(--radio);padding:14px;font-size:15px}
+.info-dia b{color:var(--ambar)}
+
+/* Reserva */
+.reserva{display:grid;grid-template-columns:1fr;gap:22px}
+@media (min-width:900px){.reserva{grid-template-columns:1.1fr .9fr}}
+.paso{font-size:13px;font-weight:700;color:var(--ambar);text-transform:uppercase;letter-spacing:.6px;margin:0 0 6px}
+form .campo{margin-bottom:14px}
+label{display:block;font-weight:600;margin-bottom:5px;font-size:15px}
+input,select,textarea{width:100%;font:inherit;color:var(--texto);background:#0f1d40;border:1px solid #3a4f88;border-radius:10px;padding:12px;min-height:48px}
+textarea{min-height:90px}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ayuda{font-size:13px;color:var(--suave);margin-top:4px}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px}
+.check input{width:22px;height:22px;min-height:0;margin-top:2px;flex:none}
+.resumen{background:var(--noche-2);border:1px solid #2a3c70;border-radius:var(--radio);padding:16px;font-size:15px}
+.resumen .total{font-size:24px;font-weight:800;color:var(--ambar)}
+.error{color:var(--aviso);font-size:14px;margin-top:6px}
+.ok-box{background:#11301f;border:1px solid #2f7a4e;border-radius:var(--radio);padding:18px}
+.ok-box h3{margin-top:0}
+.codigo{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:22px;letter-spacing:2px;color:var(--ambar)}
+
+/* Nubes */
+.nubes{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:760px){.nubes{grid-template-columns:repeat(3,1fr)}}
+.nube{background:var(--noche-2);border-left:4px solid var(--ambar);border-radius:10px;padding:16px}
+.nube h3{margin:0 0 6px;font-size:18px}
+.nube p{margin:0;color:var(--suave);font-size:15px}
+
+/* Grupos */
+.turnos{display:grid;grid-template-columns:1fr;gap:12px;margin:18px 0}
+@media (min-width:760px){.turnos{grid-template-columns:repeat(3,1fr)}}
+.turno{background:var(--noche-2);border:1px solid #2a3c70;border-radius:var(--radio);padding:14px}
+.turno b{color:var(--ambar)}
+
+/* Cómo llegar */
+.llegar{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:760px){.llegar{grid-template-columns:1fr 1fr}}
+.mapa{background:var(--noche-2);border:1px dashed #4a5e98;border-radius:var(--radio);padding:18px}
+
+/* FAQ / asistente */
+details{background:var(--noche-2);border:1px solid #2a3c70;border-radius:12px;padding:12px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--suave);margin:10px 0 2px}
+.asis-btn{position:fixed;right:16px;bottom:16px;z-index:30;border-radius:999px;box-shadow:var(--sombra)}
+.asis{position:fixed;right:12px;bottom:80px;z-index:31;width:min(370px,calc(100vw - 24px));max-height:70vh;display:none;flex-direction:column;
+  background:#0f1c3f;border:1px solid #3a4f88;border-radius:16px;box-shadow:var(--sombra);overflow:hidden}
+.asis.abierto{display:flex}
+.asis-cab{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--noche-3)}
+.asis-cab b{font-size:15px}
+.asis-cerrar{background:none;border:0;color:var(--texto);font-size:24px;cursor:pointer;width:40px;height:40px}
+.asis-log{padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.msg{padding:9px 12px;border-radius:12px;max-width:88%}
+.msg.bot{background:var(--noche-3);align-self:flex-start}
+.msg.yo{background:var(--ambar);color:#1a1300;align-self:flex-end}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 12px 8px}
+.chip{background:transparent;border:1px solid #4a5e98;color:var(--texto);border-radius:999px;padding:6px 10px;font-size:13px;cursor:pointer}
+.asis form{display:flex;gap:6px;padding:10px;border-top:1px solid #2a3c70}
+.asis form input{min-height:42px;padding:8px 10px}
+.asis form button{min-height:42px}
+
+footer{padding:34px 0 90px;color:var(--suave);font-size:14px;border-top:1px solid #1b2a55}
+footer a{color:var(--suave)}
+.aviso-demo{font-size:13px;color:var(--suave);background:#1a2448;border:1px solid #2e3f74;border-radius:10px;padding:10px 12px;margin-top:14px}
+
+/* Tabla panel */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid #2a3c70;vertical-align:top}
+th{color:var(--suave);font-weight:600}
+.estado-activa{color:var(--ok)}.estado-anulada,.estado-cancelada_nubes{color:var(--aviso)}
+
+@media (min-width:600px){.logo{font-size:17px}}

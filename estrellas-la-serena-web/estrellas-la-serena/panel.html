@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Panel de Elena · Estrellas de La Serena</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1630'/%3E%3Cpath d='M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z' fill='%23f5c46b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="./">Estrellas de La Serena · Panel</a><a class="btn peq sec" href="./">Ver la web</a></div></header>
+<main><section><div class="wrap">
+<h1>Panel de Elena</h1>
+<p class="intro">Demostración: aquí se ven las reservas guardadas en este navegador. Sirve para enseñar qué pasa al anular una reserva o cancelar una noche por nubes.</p>
+
+<h2>Cancelar una noche por nubes</h2>
+<form id="f-nubes" class="fila" style="max-width:520px;align-items:end">
+  <div class="campo"><label for="n-fecha">Noche</label><input type="date" id="n-fecha" required></div>
+  <div class="campo"><button class="btn" type="submit">Cancelar por nubes</button></div>
+</form>
+<p id="n-msg" role="status"></p>
+
+<h2>Próximas noches</h2>
+<div id="resumen-noches"></div>
+
+<h2>Reservas</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Código</th><th>Noche</th><th>Experiencia</th><th>Pers.</th><th>Importe</th><th>Cliente</th><th>Idioma</th><th>Origen</th><th>Estado</th><th></th></tr></thead><tbody id="tabla"></tbody></table></div>
+<p><button class="btn sec peq" id="csv">Descargar CSV</button></p>
+
+<h2>Solicitudes de grupo</h2>
+<div style="overflow-x:auto"><table><thead><tr><th>Fecha</th><th>Grupo</th><th>Personas</th><th>Turnos</th><th>Cuándo</th><th>Cena</th><th>Origen</th><th>Correo</th></tr></thead><tbody id="tabla-g"></tbody></table></div>
+</div></section></main>
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  var E = window.ELS, NOM = {obs:"Observación",cena:"Con cena",ruta:"Ruta"};
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function pintar(){
+    var res = E.leer(E.K_RES, []).sort(function(a,b){return a.fecha<b.fecha?-1:1;});
+    document.getElementById("tabla").innerHTML = res.length ? res.map(function(r){
+      return "<tr><td>"+esc(r.codigo)+"</td><td>"+esc(r.fecha)+"</td><td>"+NOM[r.producto]+"</td><td>"+r.personas+"</td><td>"+r.precio+" €</td><td>"+esc(r.nombre)+"<br><small>"+esc(r.email)+(r.telefono?" · "+esc(r.telefono):"")+"</small></td><td>"+esc(r.idioma)+"</td><td class='estado-"+r.estado+"'>"+r.estado.replace("_"," ")+"</td><td>"+(r.estado==="activa"?"<button class='btn sec peq' data-anular='"+r.id+"'>Anular</button>":"")+"</td></tr>";
+    }).join("") : "<tr><td colspan='10'>Todavía no hay reservas en este navegador.</td></tr>";
+    var g = E.leer(E.K_GRUPOS, []);
+    document.getElementById("tabla-g").innerHTML = g.length ? g.map(function(x){
+      var t = Math.ceil(x.personas/15);
+      return "<tr><td>"+esc(x.creada.slice(0,10))+"</td><td>"+esc(x.empresa)+"</td><td>"+x.personas+"</td><td>"+t+"</td><td>"+esc(x.cuando)+"</td><td>"+(x.cena?"Sí":"No")+"</td><td>"+esc(x.origen||"directo")+"</td><td>"+esc(x.email)+"</td></tr>";
+    }).join("") : "<tr><td colspan='8'>Sin solicitudes.</td></tr>";
+    // Resumen de ocupación de las noches con reservas: ¿sale a cuenta? (12 personas ≈ 300 € limpios según la ficha)
+    var porNoche = {};
+    res.filter(function(r){return r.estado==="activa" && r.producto!=="ruta";}).forEach(function(r){porNoche[r.fecha]=(porNoche[r.fecha]||0)+r.personas;});
+    var ks = Object.keys(porNoche).sort();
+    document.getElementById("resumen-noches").innerHTML = ks.length ? "<ul>"+ks.map(function(k){var n=porNoche[k];return "<li>"+k+": "+n+"/15 personas"+(n<12?" · faltan "+(12-n)+" para llegar a 12 (salida rentable)":" · salida rentable")+"</li>";}).join("")+"</ul>" : "<p class='ayuda'>Sin noches con reservas.</p>";
+  }
+  document.addEventListener("click", function(e){
+    var id = e.target.getAttribute && e.target.getAttribute("data-anular");
+    if(!id) return;
+    var l = E.leer(E.K_RES, []);
+    l.forEach(function(r){ if(String(r.id)===id) r.estado="anulada"; });
+    E.guardar(E.K_RES, l); pintar();   // al anular, las plazas vuelven a quedar libres en el calendario
+  });
+  document.getElementById("f-nubes").addEventListener("submit", function(e){
+    e.preventDefault();
+    var k = document.getElementById("n-fecha").value; if(!k) return;
+    var n = E.leer(E.K_NOCHES, {}); n[k] = {estado:"cancelada_nubes", fecha:new Date().toISOString()}; E.guardar(E.K_NOCHES, n);
+    var l = E.leer(E.K_RES, []), afect = [];
+    l.forEach(function(r){ if(r.fecha===k && r.estado==="activa"){ r.estado="cancelada_nubes"; afect.push(r.email); } });
+    E.guardar(E.K_RES, l);
+    document.getElementById("n-msg").textContent = "Noche "+k+" cancelada. Ya no aparece en el calendario. Reservas afectadas: "+afect.length+(afect.length?" (avisar a: "+afect.join(", ")+")":"")+".";
+    pintar();
+  });
+  document.getElementById("csv").addEventListener("click", function(){
+    var l = E.leer(E.K_RES, []), cab = ["codigo","fecha","producto","personas","precio","nombre","email","telefono","idioma","estado"];
+    var csv = [cab.join(";")].concat(l.map(function(r){return cab.map(function(c){return '"'+String(r[c]==null?"":r[c]).replace(/"/g,'""')+'"';}).join(";");})).join("\n");
+    var a = document.createElement("a"); a.href = "data:text/csv;charset=utf-8,"+encodeURIComponent(csv); a.download = "reservas.csv"; a.click();
+  });
+  pintar();
+})();
+</script>
+</body>
+</html>

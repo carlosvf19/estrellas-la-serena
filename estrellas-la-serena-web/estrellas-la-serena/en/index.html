@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stargazing in La Serena, Extremadura (Spain) · Estrellas de La Serena</title>
+<meta name="description" content="Guided stargazing in La Serena, Extremadura, Spain. Groups of 15 max, optional countryside dinner, no full moon nights. If it's cloudy, you don't pay. In English.">
+<meta name="theme-color" content="#0b1630">
+<link rel="canonical" href="https://carlosvf19.github.io/estrellas-la-serena/en/">
+<link rel="alternate" hreflang="es" href="https://carlosvf19.github.io/estrellas-la-serena/">
+<link rel="alternate" hreflang="en" href="https://carlosvf19.github.io/estrellas-la-serena/en/">
+<link rel="alternate" hreflang="x-default" href="https://carlosvf19.github.io/estrellas-la-serena/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1630'/%3E%3Cpath d='M16 5l2.6 7.4L26 15l-7.4 2.6L16 25l-2.6-7.4L6 15l7.4-2.6z' fill='%23f5c46b'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#book">Skip to booking</a>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l3 8.6L28 15l-9 3.4L16 27l-3-8.6L4 15l9-3.4z" fill="#f5c46b"/></svg>Estrellas de La Serena</a>
+    <nav class="menu" aria-label="Main">
+      <a href="#experiences">Experiences</a><a href="#book">Calendar</a><a href="#clouds">If it's cloudy</a>
+      <a href="#groups">Groups</a><a href="#getting-there">Getting there</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="top-acc">
+      <a class="lang" href="../" hreflang="es" lang="es" aria-label="ES, versión en español">ES</a>
+      <a class="btn peq" href="#book">Book</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+  <svg class="stars" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <div class="wrap">
+    <h1 id="h1">Stargazing in La Serena, Extremadura</h1>
+    <p class="lema">If it's cloudy, we don't go out. And you don't pay.</p>
+    <p class="sub">Guided sessions with an astronomy guide in groups of 15 people max, only on nights without a full moon. Add a countryside dinner with local produce if you like. In English and Spanish.</p>
+    <div class="ctas">
+      <a class="btn" href="#book">See available nights</a>
+      <a class="btn sec" href="#groups">Groups &amp; companies</a>
+    </div>
+    <div class="datos">
+      <div class="dato"><b>15 people</b><span>max per session</span></div>
+      <div class="dato"><b>From €35</b><span>pay on the night</span></div>
+      <div class="dato"><b>English · Español</b><span>choose when booking</span></div>
+      <div class="dato"><b>4.9 out of 5</b><span>average rating, dinner sessions</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experiences" aria-labelledby="h-exp">
+  <div class="wrap">
+    <h2 id="h-exp">Three ways to discover the La Serena sky</h2>
+    <p class="intro">All with Elena, our astronomy guide, in small groups so everyone gets time at the telescope.</p>
+    <div class="cards">
+      <article class="card">
+        <span class="etq">Top rated</span>
+        <h3>Stargazing with countryside dinner</h3>
+        <div class="precio">€60 <small>per person</small></div>
+        <ul><li>Dinner by Miguel with local producers</li><li>Naked-eye and telescope observation</li><li>About 3 hours</li></ul>
+        <a class="btn" href="#book" data-prod="cena">Book with dinner</a>
+      </article>
+      <article class="card">
+        <h3>Stargazing</h3>
+        <div class="precio">€35 <small>per person</small></div>
+        <ul><li>Constellations, planets and the Milky Way</li><li>Telescope and laser pointer</li><li>About 2 hours</li></ul>
+        <a class="btn" href="#book" data-prod="obs">Book stargazing</a>
+      </article>
+      <article class="card">
+        <h3>Guided sunset walk</h3>
+        <div class="precio">€25 <small>per person</small></div>
+        <ul><li>Walk through the dehesa and the hills</li><li>Ends with the first stars</li><li>Family friendly</li></ul>
+        <a class="btn" href="#book" data-prod="ruta">Book the walk</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="book" aria-labelledby="h-res">
+  <div class="wrap">
+    <h2 id="h-res">Pick your night</h2>
+    <p class="intro">The calendar shows the Moon for every night. Full moon nights are not sold because moonlight hides the deep sky. The green dot marks dark weeknights: quieter and with a better sky.</p>
+    <div id="paso-reserva" class="reserva">
+      <div>
+        <p class="paso">1 · The night</p>
+        <div class="cal-cab">
+          <button type="button" class="cal-nav" id="cal-prev" aria-label="Previous month">‹</button>
+          <h3 id="cal-mes" aria-live="polite"></h3>
+          <button type="button" class="cal-nav" id="cal-next" aria-label="Next month">›</button>
+        </div>
+        <div class="cal" id="cal"></div>
+        <ul class="leyenda">
+          <li><span class="pt" style="border:2px solid #4c7ad6"></span>Dark sky</li>
+          <li><span class="pt" style="background:#7fd6a4;border-radius:50%"></span>Dark weeknight</li>
+          <li><span class="pt" style="background:#2a2433;border:1px solid #4a3550"></span>Full moon: no sessions</li>
+        </ul>
+        <div class="info-dia" id="info-dia" aria-live="polite"></div>
+        <p class="error" id="err-fecha" aria-live="polite"></p>
+      </div>
+      <form id="form-reserva" novalidate>
+        <p class="paso">2 · Your details</p>
+        <div class="fila">
+          <div class="campo">
+            <label for="producto">Experience</label>
+            <select id="producto" name="producto">
+              <option value="obs">Stargazing · €35</option>
+              <option value="cena">With dinner · €60</option>
+              <option value="ruta">Walk · €25</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="personas">People</label>
+            <select id="personas" name="personas">
+              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+            </select>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="nombre">Name</label>
+          <input id="nombre" name="nombre" autocomplete="name" required>
+          <p class="error" id="err-nombre" aria-live="polite"></p>
+        </div>
+        <div class="campo">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          <p class="ayuda">To send your confirmation, the meeting point and the cloud alert.</p>
+          <p class="error" id="err-email" aria-live="polite"></p>
+        </div>
+        <div class="fila">
+          <div class="campo">
+            <label for="telefono">Mobile <span style="font-weight:400">(optional)</span></label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel">
+            <p class="ayuda">Only for the cloud alert.</p>
+          </div>
+          <div class="campo">
+            <label for="idioma">Session language</label>
+            <select id="idioma" name="idioma"><option value="en">English</option><option value="es">Español</option></select>
+          </div>
+        </div>
+        <div class="campo">
+          <label class="check"><input type="checkbox" name="privacidad" id="privacidad"> <span>I have read the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>. We only use your data to manage this booking and to tell you if it's cancelled; we never share it.</span></label>
+          <p class="error" id="err-priv" aria-live="polite"></p>
+        </div>
+        <div class="resumen" id="resumen" aria-live="polite"></div>
+        <p><button class="btn" type="submit" style="width:100%;margin-top:14px">Book my night</button></p>
+      </form>
+    </div>
+    <div id="ok-reserva" hidden></div>
+  </div>
+</section>
+
+<section id="clouds" aria-labelledby="h-nubes">
+  <div class="wrap">
+    <h2 id="h-nubes">What if it's cloudy?</h2>
+    <p class="intro">It's what you ask us most, so here it is: we never sell a cloudy night as a good one. Roughly one night in six is cancelled because of clouds.</p>
+    <div class="nubes">
+      <div class="nube"><h3>1. We decide on the day</h3><p>Elena checks the forecast on the day and, before 5 pm, lets you know by email (and phone if you gave us one).</p></div>
+      <div class="nube"><h3>2. You choose</h3><p>Move to another available night or cancel. As nothing is paid when booking, there's nothing to refund or claim.</p></div>
+      <div class="nube"><h3>3. If it's borderline, we tell you</h3><p>If the forecast is uncertain, we tell you what you'll be able to see and you decide whether to come.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="groups" aria-labelledby="h-grupos">
+  <div class="wrap">
+    <h2 id="h-grupos">Groups &amp; companies: weeknight skies for everyone</h2>
+    <p class="intro">Team dinners, associations or groups of friends, especially Monday to Thursday, when the sky is quietest. So that everyone gets a good look through the telescope, never more than 15 people stargaze at once: large groups have dinner together and stargaze in shifts.</p>
+    <div class="turnos">
+      <div class="turno"><b>First</b><br>The whole group has dinner together in the countryside, with local produce.</div>
+      <div class="turno"><b>Then</b><br>The first shift (up to 15) stargazes with Elena while the rest enjoy the after-dinner chat.</div>
+      <div class="turno"><b>Finally</b><br>Shifts swap. Nobody misses the telescope and nobody waits standing up.</div>
+    </div>
+    <form id="form-grupo" novalidate style="max-width:620px">
+      <div class="fila">
+        <div class="campo"><label for="gempresa">Company or group</label><input id="gempresa" name="gempresa" autocomplete="organization"></div>
+        <div class="campo"><label for="gpersonas">People</label><input id="gpersonas" name="gpersonas" type="number" min="1" max="60" value="20" inputmode="numeric"></div>
+      </div>
+      <p class="ayuda" id="turnos-txt" aria-live="polite"></p>
+      <div class="fila">
+        <div class="campo"><label for="gemail">Contact email</label><input id="gemail" name="gemail" type="email" autocomplete="email"></div>
+        <div class="campo"><label for="gcuando">Approximate dates</label><input id="gcuando" name="gcuando" placeholder="e.g. a Thursday in March"></div>
+      </div>
+      <div class="campo"><label class="check"><input type="checkbox" name="gcena" id="gcena" checked> <span>With countryside dinner</span></label></div>
+      <div class="campo"><label class="check"><input type="checkbox" name="gprivacidad" id="gprivacidad"> <span>I have read the <a href="privacy.html" target="_blank" rel="noopener">privacy policy</a>. We only use this data to prepare your proposal.</span></label></div>
+      <button class="btn" type="submit">Request a group proposal</button>
+      <div id="grupo-msg" role="status" style="margin-top:12px"></div>
+    </form>
+  </div>
+</section>
+
+<section id="getting-there" aria-labelledby="h-llegar">
+  <div class="wrap">
+    <h2 id="h-llegar">Getting there</h2>
+    <p class="intro">We meet at a point in the Castuera area (Badajoz), away from village lights. The exact location comes in your confirmation email with a map link.</p>
+    <div class="llegar">
+      <div class="mapa">
+        <p><b>Area:</b> Castuera, La Serena district (Badajoz, Extremadura, Spain).</p>
+        <p><a href="https://www.openstreetmap.org/?mlat=38.7233&amp;mlon=-5.5440#map=11/38.7233/-5.5440" target="_blank" rel="noopener">See the area on the map</a></p>
+        <p class="ayuda">You'll need a car. There's parking next to the meeting point.</p>
+      </div>
+      <div>
+        <p><b>Meeting time:</b> 1 hour after dark (around 7:30 pm in winter, around 11 pm in summer). We'll confirm it by email.</p>
+        <p><b>What to bring:</b> warm clothes (nights are cool even in summer), comfortable shoes and a red-light torch if you have one.</p>
+        <p><b>Children:</b> welcome with an adult. We recommend it from about age 6 as it ends late.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="h-dudas">
+  <div class="wrap">
+    <h2 id="h-dudas">Frequently asked questions</h2>
+    <details><summary>What happens if it's cloudy?</summary><p>We don't go out. We let you know before 5 pm on the day and you choose another night or cancel without paying anything.</p></details>
+    <details><summary>Do you run sessions for groups and companies?</summary><p>Yes. Up to 15 people stargaze at once; large groups have dinner together and stargaze in shifts. <a href="#groups">Request a proposal</a>.</p></details>
+    <details><summary>How do I get there?</summary><p>By car, to the Castuera area (Badajoz). The exact point is in your confirmation email.</p></details>
+    <details><summary>Can children come?</summary><p>Yes, with an adult. Recommended from about age 6.</p></details>
+    <details><summary>Is it in English?</summary><p>Yes. Elena guides in English and Spanish: choose the language when booking.</p></details>
+    <details><summary>Why no full moon sessions?</summary><p>Because moonlight hides most of the deep sky. We'd rather not sell you a night that isn't worth it.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Estrellas de La Serena</b> · Elena &amp; Miguel · Castuera (Badajoz, Spain) · <a href="mailto:hola@estrellasdelaserena.es">hola@estrellasdelaserena.es</a></p>
+    <p><a href="privacy.html">Privacy policy</a> · <a href="../" hreflang="es" aria-label="ES, versión en español">ES</a></p>
+    <p class="aviso-demo">Website built as a class case study (IES Donoso Cortés). Fictional business: bookings are a demo and are only stored in this browser.</p>
+  </div>
+</footer>
+
+<button class="btn asis-btn" id="asis-abrir" aria-controls="asis" aria-expanded="false">Questions? Ask</button>
+<div class="asis" id="asis" role="dialog" aria-label="Question assistant">
+  <div class="asis-cab"><b>Quick answers</b><button class="asis-cerrar" id="asis-cerrar" aria-label="Close">×</button></div>
+  <div class="asis-log" id="asis-log" aria-live="polite"></div>
+  <div class="chips" id="asis-chips"></div>
+  <form id="asis-form"><label for="asis-q" class="skip">Your question</label><input id="asis-q" placeholder="Type your question" autocomplete="off"><button class="btn peq" type="submit">Send</button></form>
+</div>
+
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
